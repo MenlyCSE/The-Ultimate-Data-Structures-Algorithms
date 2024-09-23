@@ -1,14 +1,12 @@
-// 
+// space complexity
 class Main {
-    // 0(n + m)
-    log(numbers, names) {
-        // 0(n) - int
-        for (const number of numbers) 
-            console.log(number);
+    greet(names) {
+        // 0(n)
+        const copy = names.length;
 
-        // 0(m) - string
-        for (const name of names)
-            console.log(name);
+        // 0(1) - i is fixed to amount
+        for (let i = 0; i < names.length; i++)
+            console.log(`Hello ${names[i]}!`);
     }
 }
 
