@@ -1,2 +1,3 @@
-# The-Ultimate-Data-Structures-Algorithms
-Course Material
+# The Ultimate Data Structures Algorithms
+
+From Code With Mosh's certification program...
