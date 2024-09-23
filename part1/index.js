@@ -27,7 +27,7 @@ class Array {
     }
 
     removeAt(index) {
-        _array.get(this)[index] = `removed`;
+        _array.get(this).splice(index, 1);
         return `removed at index ${index}`;
     }
 }
