@@ -1,12 +1,13 @@
 // space complexity
 class Main {
-    greet(names) {
-        // 0(n)
-        const copy = names.length;
-
-        // 0(1) - i is fixed to amount
-        for (let i = 0; i < names.length; i++)
-            console.log(`Hello ${names[i]}!`);
+    array() {
+        //
+        const numbers = [];
+        numbers.push(10);
+        numbers.push(20);
+        numbers.push(30);
+        numbers.push(40);
+        console.log(numbers);
     }
 }
 
