@@ -5,34 +5,41 @@ class Array {
     constructor() {
         _array.set(this, []);
     }
-    
-    show() {
-        return _array.get(this);
-    }
 
-    indexOf(number) {
-        let i = 0;
-        while (number !== _array.get(this)[i] && i < _array.get(this).length)
-            i++;
-
-        if (number === _array.get(this)[i])
-            return `found at index ${i}`;
-
-        return `index -1`;
-    }
-
-    insert(obj) {
-        _array.get(this).push(obj);
-        return `pushed ${obj}`;
+    insert(item) {
+        _array.get(this)[_array.get(this).length] = item;
+        return `inserted ${item}`;
     }
 
     removeAt(index) {
-        _array.get(this).splice(index, 1);
-        return `removed at index ${index}`;
+        if (index < 0 || index >= _array.get(this).length)
+            throw new Error('Illegal argument exeption!');
+
+        for (let i = index; i < _array.get(this).length; i++) 
+            _array.get(this)[i] = _array.get(this)[i+1]
+    }
+
+    indexOf(item) {
+        for (let i = 0; i < _array.get(this).length; i++) 
+            if (item == _array.get(this)[i])
+                return i; 
+
+        return -1;
+    }
+
+    print() {
+        for (let i = 0; i < _array.get(this).length; i++)
+            console.log(_array.get(this)[i]);
     }
 }
 
 const a = new Array();
 
-for (let i = 7; i <= 12; i++)
-    a.insert(i);
+// test cases
+a.insert(10)
+a.insert(20)
+a.insert(30)
+a.insert(40)
+a.removeAt(0)
+console.log(`Index of 40... ${a.indexOf(40)}`)
+a.print()
