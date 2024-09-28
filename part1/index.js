@@ -9,6 +9,7 @@ class LinkedList {
     addFirst(item) {
         let arrayLength = array.get(this).length;
         let newArray = [item];
+
         for (let i = 0; i < arrayLength; i++)
             newArray[i+1] = array.get(this)[i];
 
@@ -21,7 +22,10 @@ class LinkedList {
     }
 
     deleteFirst() {
-        array.get(this)[0] = null;
+        let arrayLength = array.get(this).length;
+
+        for (let i = 0; i < arrayLength; i++)
+            array.get(this)[i] = array.get(this)[i+1]
     }
 
     deleteLast() {
