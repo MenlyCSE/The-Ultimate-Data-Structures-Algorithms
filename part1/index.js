@@ -1,32 +1,36 @@
 // Linked Lists
 class Node {
-    constructor(data) {
-        this.data = data;
+    constructor(value) {
+        this.value = value;
         this.next = null;
     }
 }
 
 class LinkedList {
     constructor() {
-        this.head;
+        this.first = null;
+        this.last = null;
     }
 
-    addLast(value) {
-        if (!this.head) {
-            this.head = new Node(value);
-            return;
+    get show() {
+        
+    }
+
+    addLast(item) {
+        const node = new Node(item);
+
+        if (this.first == null)
+            this.first = this.last = node;
+        else {
+            this.last.next = node;
+            this.last = node;
         }
     }
 }
 
+const list = new LinkedList();
 
 // test cases
-// list.addLast(1);
-// list.addLast(2);
-// list.addLast(3);
-// list.addFirst(4);
-// list.addFirst(5);
-// list.deleteFirst();
-// list.deleteLast();
-// list.contains(10);
-// list.indexOf(10);
+list.addLast(10);
+list.addLast(20);
+list.addLast(30);
