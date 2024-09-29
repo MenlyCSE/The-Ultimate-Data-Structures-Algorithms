@@ -11,7 +11,7 @@ class LinkedList {
         let newArray = [item];
 
         for (let i = 0; i < arrayLength; i++)
-            newArray[i+1] = array.get(this)[i];
+            newArray[i + 1] = array.get(this)[i];
 
         array.set(this, newArray);
     }
@@ -25,13 +25,40 @@ class LinkedList {
         let arrayLength = array.get(this).length;
 
         for (let i = 0; i < arrayLength; i++)
-            array.get(this)[i] = array.get(this)[i+1]
+            array.get(this)[i] = array.get(this)[i + 1]
+
+        array.get(this).length = arrayLength - 1;
     }
 
     deleteLast() {
-
+        let arrayLength = array.get(this).length;
+        array.get(this).length = arrayLength - 1;
     }
- 
+
+    contains(item) {
+        let arrayLength = array.get(this).length;
+
+        for (let i = 0; i < arrayLength; i++)
+            if (array.get(this)[i] === item) {
+                console.log(true)
+                return;
+            }
+
+        console.log(false)
+    }
+
+    indexOf(item) {
+        let arrayLength = array.get(this).length;
+
+        for (let i = 0; i < arrayLength; i++)
+            if (array.get(this)[i] === item) {
+                console.log(`Index: ${i}`)
+                return;
+            }
+
+        console.log(`Index: ${-1}`)
+    }
+
     get peek() {
         return array.get(this);
     }
@@ -39,17 +66,15 @@ class LinkedList {
 
 const list = new LinkedList();
 
-list.addLast(1)
-list.addLast(2)
-list.addLast(3)
-list.addFirst(4)
-list.addFirst(5)
+// test cases
+list.addLast(1);
+list.addLast(2);
+list.addLast(3);
+list.addFirst(4);
+list.addFirst(5);
 list.deleteFirst();
-console.log(list.peek)
+list.deleteLast();
+list.contains(10);
+list.indexOf(10);
 
-// addFirst
-// addLast
-// deleteFirst
-// deleteLast
-// contains
-// indexOf
+console.log(list.peek);
