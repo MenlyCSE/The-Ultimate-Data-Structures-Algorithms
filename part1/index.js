@@ -48,4 +48,4 @@ list.addLast(20);
 list.addLast(30);
 list.addFirst(5);
 
-list.show(list)
+list.show(list);
