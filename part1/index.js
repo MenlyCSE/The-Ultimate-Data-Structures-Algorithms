@@ -12,6 +12,10 @@ class LinkedList {
         this.last = null;
     }
 
+    #isEmpty() {
+        return this.first == null;
+    }
+
     show(list) {
         console.log(list.first);
         console.log(list.last);
@@ -20,7 +24,7 @@ class LinkedList {
     addLast(item) {
         let node = new Node(item);
         
-        if (this.first == null)
+        if (this.#isEmpty())
             this.first = this.last = node;
         else {
             this.last.next = node;
@@ -31,12 +35,34 @@ class LinkedList {
     addFirst(item) {
         let node = new Node(item);
 
-        if (this.first == null) 
+        if (this.#isEmpty()) 
             this.first = this.last = node;
         else {
-            node.next = node;
+            node.next = this.first;
             this.first = node;
         }
+    }
+
+    indexOf(item) {
+        let index = 0;
+        let current = this.first;
+
+        while (current != null) {
+            if (current.value == item)
+                return index;
+
+            current = current.next;
+            index++;
+        }
+
+        return -1;
+    }
+
+    contains(item) {
+        if (this.indexOf(item) != -1)
+            return item;
+
+        return null;
     }
 }
 
@@ -45,7 +71,8 @@ const list = new LinkedList();
 // test cases
 list.addLast(10);
 list.addLast(20);
-list.addLast(30);
 list.addFirst(5);
+console.log(`Index: ${list.indexOf(5)}`);
+console.log(`Contains... ${list.contains(5)}`);
 
 list.show(list);
