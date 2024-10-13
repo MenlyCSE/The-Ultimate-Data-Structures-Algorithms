@@ -90,7 +90,7 @@ class LinkedList {
         }
 
         let second = this.first.next;
-        this.first.next == null;
+        this.first.next = null;
         this.first = second;
     }
 
