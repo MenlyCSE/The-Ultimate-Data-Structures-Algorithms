@@ -16,6 +16,18 @@ class LinkedList {
         return this.first == null;
     }
 
+    #getPrevious(node) {
+        let current = this.first
+        while (current != null) {
+            if (current.next == node)
+                return current;
+    
+            current = current.next;
+        }
+
+        return null;
+    }
+
     show(list) {
         console.log(list.first);
         console.log(list.last);
@@ -81,6 +93,23 @@ class LinkedList {
         this.first.next == null;
         this.first = second;
     }
+
+    removeLast() {
+        if (this.#isEmpty()) {
+            console.error(`LinkedList is empty!`)
+            return;
+        }
+
+        if (this.first == this.last) {
+            this.first = this.last = null;
+            console.error(`LinkedList contains one item!`)
+            return;
+        }
+                
+        let previous = this.#getPrevious(this.last);
+        this.last = previous;
+        this.last.next = null;
+    }
 }
 
 const list = new LinkedList();
@@ -91,6 +120,7 @@ list.addLast(20);
 list.addFirst(5);
 list.addFirst(30);
 list.removeFirst();
+list.removeLast();
 
 console.log(`Index: ${list.indexOf(5)}`);
 console.log(`Contains... ${list.contains(5)}`);
