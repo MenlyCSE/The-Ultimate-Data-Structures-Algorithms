@@ -64,6 +64,23 @@ class LinkedList {
 
         return null;
     }
+
+    removeFirst() {
+        if (this.#isEmpty()) {
+            console.error(`LinkedList is empty!`)
+            return;
+        }
+
+        if (this.first == this.last) {
+            this.first = this.last = null;
+            console.error(`LinkedList contains one item!`)
+            return;
+        }
+
+        let second = this.first.next;
+        this.first.next == null;
+        this.first = second;
+    }
 }
 
 const list = new LinkedList();
@@ -72,6 +89,9 @@ const list = new LinkedList();
 list.addLast(10);
 list.addLast(20);
 list.addFirst(5);
+list.addFirst(30);
+list.removeFirst();
+
 console.log(`Index: ${list.indexOf(5)}`);
 console.log(`Contains... ${list.contains(5)}`);
 
