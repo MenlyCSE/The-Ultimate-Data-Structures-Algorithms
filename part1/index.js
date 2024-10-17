@@ -122,6 +122,19 @@ class LinkedList {
     size() {
         return this.#size;
     }
+
+    toArray() {
+        let array = [];
+        let index = 0;
+        let current = this.first;
+        
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+
+        return array;
+    }
 }
 
 const list = new LinkedList();
@@ -137,5 +150,6 @@ list.removeLast();
 console.log(`Index: ${list.indexOf(5)}`);
 console.log(`Contains... ${list.contains(5)}`);
 console.log(`Size... ${list.size()}`);
+console.log(list.toArray());
 
 list.show(list);
