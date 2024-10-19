@@ -135,6 +135,27 @@ class LinkedList {
 
         return array;
     }
+
+    reverse() {
+        let array = [];
+        let index = 0;
+        let current = this.first;
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+
+        let newArray = [];
+        let newIndex = 0;
+        for (let i = array.length-1; i >= 0; i--)
+            newArray[newIndex++] = array[i];
+
+        current = this.first;
+        for (let i = 0; i < newArray.length; i++) {
+            current.value = newArray[i];
+            current = current.next;
+        }
+    }
 }
 
 const list = new LinkedList();
@@ -142,14 +163,7 @@ const list = new LinkedList();
 // test cases
 list.addLast(10);
 list.addLast(20);
-list.addFirst(5);
-list.addFirst(30);
-list.removeFirst();
-list.removeLast();
+list.addLast(30);
 
-console.log(`Index: ${list.indexOf(5)}`);
-console.log(`Contains... ${list.contains(5)}`);
-console.log(`Size... ${list.size()}`);
-console.log(list.toArray());
-
+list.reverse();
 list.show(list);
